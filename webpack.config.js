@@ -1,14 +1,16 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const path = require('path');
+require('dotenv').config();
 
 module.exports = {
   devtool: 'source-map',
   entry: __dirname + "/app/app.js",
   output: {
     path: __dirname + '/dist',
-    filename: 'bundle.js',
+    filename: '[name]-bundle.js',
     publicPath: '/'
   },
   resolve: {
@@ -22,12 +24,12 @@ module.exports = {
       port: 7700,
   } ,
   module: {
-      loaders: [
+      rules: [
           {
-              test: /\.jsx?$/, exclude: [/node_modules/, /bower_components/], loader: 'babel-loader'
+              test: /\.jsx?$/, exclude: [/node_modules/, /bower_components/], use: 'babel-loader'
           },
           {
-              test: /\.css$/, loader: ExtractTextPlugin.extract(
+              test: /\.css$/, use: ExtractTextPlugin.extract(
                   {
                       fallback: 'style-loader',
                       use: ['css-loader', 'sass-loader']
@@ -44,7 +46,13 @@ module.exports = {
       }),
       new webpack.BannerPlugin("O'Brian Webpack Setup. Inc"),
       new webpack.HotModuleReplacementPlugin(),
-      new ExtractTextPlugin("[name]-[hash].css"),
-      new webpack.NamedModulesPlugin()
+      new ExtractTextPlugin("style.bundle.css"),
+      new webpack.NamedModulesPlugin(),
+    //   new BundleAnalyzerPlugin(),
+      new webpack.DefinePlugin(
+          {
+            API_URL: JSON.stringify(process.env.API_URL)
+          }
+      )
   ]
 };

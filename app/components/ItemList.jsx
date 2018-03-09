@@ -12,7 +12,7 @@ class ItemList extends Component {
     }
 
     componentDidMount() {
-        this.props.fetchData('http://localhost:3000/customers?_limit=5&_page=3');
+        this.props.fetchData(`${API_URL}?_limit=5&_page=3`);
     }
 
     render() {
