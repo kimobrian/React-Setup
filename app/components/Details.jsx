@@ -20,7 +20,7 @@ class Details extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchData('http://localhost:3000/customers/'+parseInt(this.props.match.params.id));
+        this.props.fetchData(API_URL+parseInt(this.props.match.params.id));
     }
 
     getSelectedItem(){
