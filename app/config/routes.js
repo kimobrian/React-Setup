@@ -1,31 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import configureStore from '../store/configureStore';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import ItemList from '../components/ItemList';
-import TestComponent from '../components/ItemTest';
-import Details from '../components/Details';
-import Links from '../components/Links';
+import BooksComponent from '../components/BooksComponent';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import AppBar from 'material-ui/AppBar';
 
-var store = configureStore();
+const AppBarComponent = () => <AppBar title="GraphQL React" />;
 
 const routes = (
-    <Provider store={store}>
-        <MuiThemeProvider>
-            <BrowserRouter>
-              <div>
-                  <Links />
-                  <Switch>
-                      <Route exact path="/" component={ItemList} />
-                      <Route path="/item/:id" component = {Details} />
-                      <Route path="/item" component={TestComponent} />
-                  </Switch>
-              </div>
-            </BrowserRouter>
-        </MuiThemeProvider>
-    </Provider>
+	<MuiThemeProvider>
+		<BrowserRouter>
+			<div>
+				<AppBarComponent />
+				<Switch>
+					<Route exact path="/" component={BooksComponent} />
+				</Switch>
+			</div>
+		</BrowserRouter>
+	</MuiThemeProvider>
 );
 
 export default routes;

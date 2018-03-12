@@ -1,7 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const path = require('path');
 require('dotenv').config();
 
@@ -48,7 +47,6 @@ module.exports = {
       new webpack.HotModuleReplacementPlugin(),
       new ExtractTextPlugin("style.bundle.css"),
       new webpack.NamedModulesPlugin(),
-    //   new BundleAnalyzerPlugin(),
       new webpack.DefinePlugin(
           {
             API_URL: JSON.stringify(process.env.API_URL)
