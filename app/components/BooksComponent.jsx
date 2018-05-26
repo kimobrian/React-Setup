@@ -1,11 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
+import "./styles.scss";
 
-export default class BooksComponent extends Component {
-  constructor (props){
-    super(props);
-  }
-
-  render () {
-    return <div> Books Component </div>;
-  }
-}
+export default ()=> (<div> Books Component </div>);

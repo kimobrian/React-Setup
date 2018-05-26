@@ -12,7 +12,7 @@ const routes = (
       <div>
         <AppBarComponent />
         <Switch>
-          <Route exact path="/" component={BooksComponent} />
+          <Route exact path="/" component={ BooksComponent } />
         </Switch>
       </div>
     </BrowserRouter>

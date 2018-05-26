@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+require("dotenv").config();
 
 module.exports = {
   entry: { app: __dirname + "/app/app.js"},
@@ -47,9 +48,9 @@ module.exports = {
     new webpack.DefinePlugin({
       "process.env": {
         "NODE_ENV": "production"
-      }
+      },
+      API_URL: JSON.stringify(process.env.API_URL)
     }),
-    new webpack.optimize.CommonsChunkPlugin({ names: ["vendor"], filename: "vendor.min-[hash:6].js", minChunks: module => /node_modules/.test(module.resource)}),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
   ]
 };
