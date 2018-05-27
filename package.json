@@ -1,4 +1,7 @@
 {
+  "name": "react-client",
+  "version": "1.0.0",
+  "description": "ReactJS, Apollo, GraphQL client repo",
   "scripts": {
     "start": "./node_modules/.bin/webpack-dev-server --progress",
     "build": "NODE_ENV=production ./node_modules/.bin/webpack --config ./webpack.production.config.js --progress",
